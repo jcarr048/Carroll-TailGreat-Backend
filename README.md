@@ -22,6 +22,10 @@ TailGreat's purpose is to serve fans who wish to host or join tailgate party's f
 
 ### **_Screenshots_**
 
+![ERD](images/TailGreatCHD.png)
+
+![CHD](images/TailGreatERD.png)
+
 ####
 
 ---
