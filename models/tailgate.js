@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         as: 'tailgate_feedback',
         foreignKey: 'tailgate_id'
       })
-      Tailgate.hasOne(models.Host, {
+      Tailgate.belongsTo(models.Host, {
         as: 'tailgate_host',
-        foreignKey: 'tailgate_id'
+        foreignKey: 'host_id'
       })
     }
   }
