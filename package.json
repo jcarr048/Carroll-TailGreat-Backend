@@ -1,0 +1,27 @@
+{
+  "name": "carroll-tailgreat-backend",
+  "version": "1.0.0",
+  "description": "## _SEI 9-19 Capstone Project_",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcarr048/Carroll-TailGreat-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcarr048/Carroll-TailGreat-Backend/issues"
+  },
+  "homepage": "https://github.com/jcarr048/Carroll-TailGreat-Backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sequelize": "^6.26.0"
+  }
+}
