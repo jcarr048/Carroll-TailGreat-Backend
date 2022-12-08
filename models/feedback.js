@@ -4,12 +4,12 @@ module.exports = (sequelize, DataTypes) => {
   class Feedback extends Model {
     static associate(models) {
       Feedback.belongsTo(models.User, {
-        as: 'reviewer',
-        foreignKey: 'reviewer_id'
+        as: 'user_feedback',
+        foreignKey: 'user_id'
       })
-      Feedback.belongsTo(models.Tailgates, {
-        as: 'critique',
-        foreignKey: 'critique_id'
+      Feedback.belongsTo(models.Tailgate, {
+        as: 'tailgate_feedback',
+        foreignKey: 'tailgate_id'
       })
     }
   }
@@ -44,4 +44,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Feedback',
     tableName: 'feedbacks'
   })
+  return Feedback
 }
