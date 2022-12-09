@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       age: DataTypes.INTEGER,
       tailgate_id: {
-        tyoe: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
         referenes: {
           model: 'tailgates',
