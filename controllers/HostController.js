@@ -1,6 +1,6 @@
 const { Host, Tailgate } = require('../models')
 const middleware = require('../middleware')
-console.log(middleware)
+
 const GetHosts = async (req, res) => {
   try {
     const hosts = await Host.findAll({
@@ -41,8 +41,66 @@ const RegisterHost = async (req, res) => {
   }
 }
 
+const LoginHost = async (req, res) => {
+  try {
+    const host = await Host.findOne({
+      where: {
+        hostName: req.body.username
+      },
+      raw: true
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      let payload = {
+        id: host.id,
+        username: host.hostName,
+        email: host.email
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ host: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
+
+const UpdateHost = async (req, res) => {
+  try {
+    let hostId = parseInt(req.params.user_id)
+    let updatedHost = await Host.update(req.body, {
+      where: { id: hostId },
+      returning: true
+    })
+    res.send(updatedHost)
+  } catch (error) {
+    throw error
+  }
+}
+
+const DeleteHost = async (req, res) => {
+  try {
+    let hostId = parseInt(req.params.host_id)
+    await Host.destroy({ where: { id: hostId } })
+    res.send({ message: `Deleted user with an id of ${hostId}` })
+  } catch (error) {
+    throw error
+  }
+}
+
+const CheckSession = async (req, res) => {
+  const { payload } = res.locals
+  res.send(payload)
+}
+
 module.exports = {
   GetHosts,
   GetHostbyId,
-  RegisterHost
+  RegisterHost,
+  LoginHost,
+  UpdateHost,
+  DeleteHost,
+  CheckSession
 }
