@@ -2,15 +2,13 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      User.hasMany(models.Feedback, {
-        as: 'user_feedback',
-        foreignKey: 'user_id'
-      })
-      User.belongsTo(models.Tailgate, {
-        as: 'attendee',
-        foreignKey: 'tailgate_id'
-      })
+      // define association here
     }
   }
   User.init(
@@ -21,12 +19,18 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       age: DataTypes.INTEGER,
-      tailgate_id: DataTypes.INTEGER
+      tailgate_id: {
+        tyoe: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        referenes: {
+          model: 'tailgates',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,
-      modelName: 'User',
-      tableName: 'user'
+      modelName: 'User'
     }
   )
   return User

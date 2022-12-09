@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Feedbacks', {
+    await queryInterface.createTable('feedbacks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,7 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
       rating: {
         type: Sequelize.INTEGER
@@ -19,7 +24,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       tailgate_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'tailgates',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -29,9 +39,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Feedbacks');
+    await queryInterface.dropTable('feedbacks')
   }
-};
+}

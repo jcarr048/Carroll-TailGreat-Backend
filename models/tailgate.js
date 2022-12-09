@@ -27,12 +27,19 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.TEXT,
       food: DataTypes.STRING,
       games: DataTypes.STRING,
-      host_id: DataTypes.INTEGER
+      host_id: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'hosts',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,
       modelName: 'Tailgate',
-      tableName: 'Tailgates'
+      tableName: 'tailgates'
     }
   )
   return Tailgate
