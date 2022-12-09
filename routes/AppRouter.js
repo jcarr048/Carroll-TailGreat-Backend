@@ -7,6 +7,6 @@ const UserRouter = require('./UserRouter')
 // Router.use('/feedback', FeedbackRouter)
 Router.use('/hosts', HostRouter)
 Router.use('/tailgates', TailgateRouter)
-// Router.use('/users', UserRouter)
+Router.use('/users', UserRouter)
 
 module.exports = Router
