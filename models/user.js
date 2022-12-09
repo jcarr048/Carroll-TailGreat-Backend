@@ -11,30 +11,23 @@ module.exports = (sequelize, DataTypes) => {
         as: 'attendee',
         foreignKey: 'tailgate_id'
       })
-      User.init(
-        {
-          tailgate_id: {
-            type: DataTypes.INTEGER,
-            onDelete: 'CASCADE',
-            references: {
-              model: 'tailgates',
-              key: 'id'
-            }
-          },
-          username: DataTypes.STRING,
-          email: DataTypes.STRING,
-          passwordDigest: DataTypes.STRING,
-          firstName: DataTypes.STRING,
-          lastName: DataTypes.STRING,
-          age: DataTypes.INTEGER
-        },
-        {
-          sequelize,
-          modelName: 'User',
-          tableName: 'users'
-        }
-      )
-      return User
     }
   }
+  User.init(
+    {
+      username: DataTypes.STRING,
+      email: DataTypes.STRING,
+      passwordDigest: DataTypes.STRING,
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
+      age: DataTypes.INTEGER,
+      tailgate_id: DataTypes.INTEGER
+    },
+    {
+      sequelize,
+      modelName: 'User',
+      tableName: 'user'
+    }
+  )
+  return User
 }

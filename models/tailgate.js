@@ -19,51 +19,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tailgate.init(
     {
-      host_id: {
-        type: DataTypes.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'hosts',
-          key: 'id'
-        }
-      },
-      image: {
-        type: DataTypes.TEXT,
-        allowNull: false
-      },
-      tailgateName: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      lot: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      age: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      alcohol: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: false
-      },
-      foodProvided: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      games: {
-        type: DataTypes.STRING,
-        allowNull: false
-      }
+      image: DataTypes.TEXT,
+      tailgateName: DataTypes.STRING,
+      lot: DataTypes.STRING,
+      age: DataTypes.STRING,
+      alcohol: DataTypes.STRING,
+      description: DataTypes.TEXT,
+      food: DataTypes.STRING,
+      games: DataTypes.STRING,
+      host_id: DataTypes.INTEGER
     },
     {
       sequelize,
       modelName: 'Tailgate',
-      tableName: 'tailgates'
+      tableName: 'Tailgates'
     }
   )
   return Tailgate
