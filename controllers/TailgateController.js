@@ -20,7 +20,7 @@ const GetTailgateDetails = async (req, res) => {
 
 const CreateTailgate = async (req, res) => {
   try {
-    let host_id = parseInt(req.params.tailgate_id)
+    let host_id = parseInt(req.params.host_id)
     let tailgateBody = {
       host_id,
       ...req.body

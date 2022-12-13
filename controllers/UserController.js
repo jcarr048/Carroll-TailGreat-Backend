@@ -53,7 +53,6 @@ const LoginUser = async (req, res) => {
       user &&
       (await middleware.comparePassword(user.passwordDigest, req.body.password))
     ) {
-      console.log('here')
       let payload = {
         id: user.id,
         username: user.username

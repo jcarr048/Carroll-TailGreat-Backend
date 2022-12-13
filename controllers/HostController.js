@@ -50,12 +50,12 @@ const LoginHost = async (req, res) => {
       raw: true
     })
     if (
-      user &&
+      host &&
       (await middleware.comparePassword(host.passwordDigest, req.body.password))
     ) {
       let payload = {
         id: host.id,
-        username: host.hostName,
+        hostName: host.hostName,
         email: host.email
       }
       let token = middleware.createToken(payload)
