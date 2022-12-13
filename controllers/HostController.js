@@ -45,13 +45,13 @@ const LoginHost = async (req, res) => {
   try {
     const host = await Host.findOne({
       where: {
-        hostName: req.body.username
+        hostName: req.body.hostName
       },
       raw: true
     })
     if (
       user &&
-      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+      (await middleware.comparePassword(host.passwordDigest, req.body.password))
     ) {
       let payload = {
         id: host.id,
@@ -59,7 +59,7 @@ const LoginHost = async (req, res) => {
         email: host.email
       }
       let token = middleware.createToken(payload)
-      return res.send({ host: payload, token })
+      return res.send({ ...payload, token })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {

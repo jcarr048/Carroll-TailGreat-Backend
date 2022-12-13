@@ -25,10 +25,10 @@ const GetUserbyId = async (req, res) => {
 
 const RegisterUser = async (req, res) => {
   try {
-    const { userName, email, password, firstName, lastName, age } = req.body
+    const { username, email, password, firstName, lastName, age } = req.body
     let passwordDigest = await middleware.hashPassword(password)
     const user = await User.create({
-      userName,
+      username,
       email,
       passwordDigest,
       firstName,
@@ -53,13 +53,14 @@ const LoginUser = async (req, res) => {
       user &&
       (await middleware.comparePassword(user.passwordDigest, req.body.password))
     ) {
+      console.log('here')
       let payload = {
         id: user.id,
-        username: user.username,
-        email: user.email
+        username: user.username
       }
       let token = middleware.createToken(payload)
-      return res.send({ user: payload, token })
+
+      return res.send({ ...payload, token })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
