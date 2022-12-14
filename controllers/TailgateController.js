@@ -11,8 +11,10 @@ const GetAllTailgates = async (req, res) => {
 
 const GetTailgateDetails = async (req, res) => {
   try {
-    const tailgates = await Tailgate.findByPk(req.params.tailgate_id)
-    res.send(tailgates)
+    const tailgate = await Tailgate.findOne({
+      where: { host_id: parseInt(req.params.tailgate_id) }
+    })
+    res.send(tailgate)
   } catch (error) {
     throw error
   }
@@ -44,9 +46,9 @@ const DeleteTailgate = async (req, res) => {
 
 const UpdateTailgate = async (req, res) => {
   try {
-    let tailgateId = parseInt(req.params.tailgate_id)
+    // let tailgateId = parseInt(req.params.tailgate_id)
     let updatedTailgate = await Tailgate.update(req.body, {
-      where: { id: tailgateId },
+      where: { host_id: req.params.tailgate_id },
       returning: true
     })
     res.send(updatedTailgate)
