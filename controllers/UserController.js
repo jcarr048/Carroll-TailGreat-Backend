@@ -96,6 +96,12 @@ const CheckSession = async (req, res) => {
   res.send(payload)
 }
 
+// const AttendTailgate = async (req, res) => {
+//   try {
+
+//   }
+// }
+
 module.exports = {
   GetUsers,
   GetUserbyId,

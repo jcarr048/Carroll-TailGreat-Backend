@@ -6,7 +6,9 @@
 
 ### By: Jeff Carroll
 
-### [Trello Board](https://trello.com/b/vSLiM4x4/capstone-project) |
+### [GitHub](https://github.com/jcarr048) | [LinkedIn](https://www.linkedin.com/in/jeff-carroll-dev/)
+
+### [Trello Board](https://trello.com/b/vSLiM4x4/capstone-project) | [Backend Repo](https://github.com/jcarr048/Carroll-TailGreat-Backend) | [Deployed Site](https://tailgreat-app.herokuapp.com/)
 
 ### **_Description_**
 
@@ -16,15 +18,22 @@ TailGreat's purpose is to serve fans who wish to host or join tailgate party's f
 
 ## **_Technologies_**
 
-####
+### Pern Stack
+
+- React
+- Node
+- JavaScript
+- PostgresSQL
+- Sequelize
+- CSS
 
 ---
 
 ### **_Screenshots_**
 
-![ERD](images/TailGreatCHD.png)
+![Front End CHD](/images/BackEndERD.png)
 
-![CHD](images/TailGreatERD.png)
+![Back End CHD](/images/BackEndERD.png)
 
 ####
 
@@ -34,6 +43,8 @@ TailGreat's purpose is to serve fans who wish to host or join tailgate party's f
 
 ####
 
----
+- [ ] Interactive Parking Lot Map
+- [ ] Sign up for tailgates
+- [ ] Have hosts declare what they need brought to tailgate
 
-### **_Credits_**
+####
